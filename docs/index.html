@@ -15,6 +15,25 @@
     </div>
 
     <div id="box"></div>
-    <script src="script.js"></script>
+
+    <script>(function(){
+          var pubnub = new PubNub({
+            publish_key: 'pub-c-f36b6693-3670-4288-ad29-63335c57dcf7',
+            subscribe_key: 'sub-c-0c5d50ea-fb04-11e6-8fcb-0619f8945a4f'});
+          function $(id) { return document.getElementById(id); }
+          var box = $('box'), channel = 'hello_world';
+          pubnub.addListener({
+              message: function(obj) {
+                  box.innerHTML = (''+obj.message).replace( /[<>]/g, '' ) + '<br>' + box.innerHTML
+              }});
+          pubnub.subscribe({channels:[channel]});
+          input.addEventListener('keyup', function(e) {
+              if ((e.keyCode || e.charCode) === 13) {
+                pubnub.publish({channel : channel,message : input.value,x : (input.value='')});
+            }
+          });
+    })();</script>
+
+    </script>
   </body>
 </html>
