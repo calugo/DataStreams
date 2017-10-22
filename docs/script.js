@@ -1,3 +1,5 @@
+
+<script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.16.2.js"></script>
 function publish() {
     console.log("Wowowowowo")
     pubnub = new PubNub({
