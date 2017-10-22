@@ -1,5 +1,5 @@
 function publish() {
-
+    console.log("Wowowowowo")
     pubnub = new PubNub({
 
       publish_key: 'pub-c-f36b6693-3670-4288-ad29-63335c57dcf7',
