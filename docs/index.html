@@ -2,38 +2,32 @@
 <html>
   <head>
     <title>Reflectance Data.</title>
-<script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.16.2.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"></script>
+    <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.16.2.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.min.js"></script>
+    <!--script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"></script-->
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
-    <div class="wrapper">
-      <h1>This is a test</h1>
-      <h2 id="myStatus"></h2>
-      <h2>Status: Not Alive</h2>
-      <!--canvas id="myChart" width="1600" height="900"></canvas-->
+    <div>
+    <h1>AgroSight Data Stream</h1>
+    <h2 id="box"></h2>
     </div>
 
-    <div id="box"></div>
+    <div class="wrapper">
+      <h1>STS-1</h1>
+      <canvas id="myChart" width="800" height="450"></canvas>
+    </div>
 
-    <script>(function(){
-          var pubnub = new PubNub({
-            publish_key: 'pub-c-f36b6693-3670-4288-ad29-63335c57dcf7',
-            subscribe_key: 'sub-c-0c5d50ea-fb04-11e6-8fcb-0619f8945a4f'});
-          function $(id) { return document.getElementById(id); }
-          var box = $('box'), channel = 'hello_world';
-          pubnub.addListener({
-              message: function(obj) {
-                  box.innerHTML = (''+obj.message).replace( /[<>]/g, '' ) + '<br>' + box.innerHTML
-              }});
-          pubnub.subscribe({channels:[channel]});
-          input.addEventListener('keyup', function(e) {
-              if ((e.keyCode || e.charCode) === 13) {
-                pubnub.publish({channel : channel,message : input.value,x : (input.value='')});
-            }
-          });
-    })();</script>
+    <div class="wrapper">
+      <h1>STS-2</h1>
+      <canvas id="myChart2" width="800" height="450"></canvas>
+    </div>
 
-    </script>
+    <div class="wrapper">
+      <h1>R</h1>
+      <canvas id="myChart3" width="800" height="450"></canvas>
+    </div>
+
+    <script src="script.js"></script>
   </body>
 </html>
